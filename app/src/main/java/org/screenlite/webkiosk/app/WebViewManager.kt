@@ -52,8 +52,8 @@ class WebViewManager(
             mediaPlaybackRequiresUserGesture = false
             setSupportMultipleWindows(true)
             setWebContentsDebuggingEnabled(true)
-            val displayMetrics = context.resources.displayMetrics
-            setInitialScale(calculateScale(displayMetrics))
+            //val displayMetrics = context.resources.displayMetrics
+            //setInitialScale(calculateScale(displayMetrics))
 
             displayZoomControls = false
             builtInZoomControls = false
@@ -77,7 +77,7 @@ class WebViewManager(
                 webView.appliedRotation = rotation.degrees.toFloat()
             }
 
-            ViewportMetaInjector.inject(webView)
+            //ViewportMetaInjector.inject(webView)
         }
     }
 
@@ -91,7 +91,7 @@ class WebViewManager(
 
             override fun onPageFinished(view: WebView, url: String?) {
                 super.onPageFinished(view, url)
-                ViewportMetaInjector.inject(view)
+                //ViewportMetaInjector.inject(view)
                 view.postDelayed({
                     view.visibility = View.VISIBLE
                     onPageLoading(false)
