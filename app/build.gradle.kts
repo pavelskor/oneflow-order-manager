@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "org.screenlite.webkiosk"
+    namespace = "com.oneflow.kiosk"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "org.screenlite.webkiosk"
+        applicationId = "com.oneflow.kiosk"
         minSdk = 22
         targetSdk = 36
         versionCode = 11
