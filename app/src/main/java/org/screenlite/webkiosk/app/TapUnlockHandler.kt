@@ -2,7 +2,7 @@ package org.screenlite.webkiosk.app
 
 class TapUnlockHandler(
     private val timeout: Long = 2000L,
-    private val requiredTaps: Int = 5,
+    private val requiredTaps: Int = 30,
     private val onUnlocked: () -> Unit
 ) {
     private var clickCount = 0
