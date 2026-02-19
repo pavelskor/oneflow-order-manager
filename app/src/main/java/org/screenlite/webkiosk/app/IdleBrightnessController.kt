@@ -51,15 +51,21 @@ class IdleBrightnessController(
     }
 
     private fun resetIdleTimer() {
-        handler.removeCallbacks(checkIdleRunnable)
-        setBrightness(activeBrightness)
-        _isIdleMode.value = false
+    handler.removeCallbacks(checkIdleRunnable)
+    setBrightness(activeBrightness)
+    _isIdleMode.value = false
+    
+    // Отключить idle mode если timeout = 0
+    if (idleTimeout > 0) {
         Log.d(
             TAG,
             "Idle timer reset → switching to active brightness: $activeBrightness% (next idle in ${idleTimeout}ms)"
         )
         handler.postDelayed(checkIdleRunnable, idleTimeout)
+    } else {
+        Log.d(TAG, "Idle mode disabled (timeout = 0)")
     }
+}
 
     private fun setBrightness(level: Int) {
         try {
