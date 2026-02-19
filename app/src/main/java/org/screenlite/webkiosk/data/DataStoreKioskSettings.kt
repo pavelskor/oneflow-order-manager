@@ -43,10 +43,10 @@ class DataStoreKioskSettings(private val context: Context) : KioskSettings {
     override fun getRotation(): Flow<Rotation> {
         return context.dataStore.data.map { prefs ->
             val degrees: Int = try {
-                prefs[keyRotation] ?: Rotation.ROTATION_90.degrees
+                prefs[keyRotation] ?: Rotation.ROTATION_0.degrees
             } catch (_: ClassCastException) {
                 val legacyKey = longPreferencesKey("rotation")
-                (prefs[legacyKey] ?: Rotation.ROTATION_90.degrees.toLong()).toInt()
+                (prefs[legacyKey] ?: Rotation.ROTATION_0.degrees.toLong()).toInt()
             }
             getRotationFromDegrees(degrees)
         }
