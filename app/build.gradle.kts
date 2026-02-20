@@ -12,8 +12,8 @@ android {
         applicationId = "org.screenlite.webkiosk"
         minSdk = 22
         targetSdk = 36
-        versionCode = 13
-        versionName = "0.0.13"
+        versionCode = 14
+        versionName = "0.0.14"
     }
 
     signingConfigs {
