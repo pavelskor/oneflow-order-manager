@@ -110,21 +110,17 @@ fun AppContent(unlockHandler: TapUnlockHandler, activity: Activity) {
     val isTv = isTvDevice()
 
     Box(Modifier.fillMaxSize().background(Color.White)) {
-        MainScreen(activity = activity, modifier = Modifier.fillMaxSize())
+    MainScreen(activity = activity, modifier = Modifier.fillMaxSize())
 
-        if(isTv) {
-            TvKioskInputOverlay(onTap = {
-                idleController.onUserInteraction()
-                unlockHandler.registerTap()
-            })
-        } else {
-            TouchKioskInputOverlay(
-                onTap = { unlockHandler.registerTap() },
-                modifier = Modifier.align(Alignment.BottomStart),
-            )
-        }
+    if(isTv) {
+        TvKioskInputOverlay(onTap = {
+            idleController.onUserInteraction()
+            unlockHandler.registerTap()
+        })
+    }
+    // TouchKioskInputOverlay удалён - тапы на экране не работают
 
-        val idleFocusRequester = remember { FocusRequester() }
+    val idleFocusRequester = remember { FocusRequester() }
 
         if (isIdleMode) {
             Box(
